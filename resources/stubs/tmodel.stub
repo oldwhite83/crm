@@ -1,0 +1,14 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class DummyClass extends _BaseModel
+{
+    // use SoftDeletes;
+
+    protected $table = DummyTable;
+
+    protected $fillable = DummyFillable;
+}

@@ -26,7 +26,11 @@ return [
     |
     */
 
-    'url' => 'http://localhost',
+    'url' => env('APP_URL','http://www.jikexueyuan.com'),
+
+	'name' => env('APP_NAME'),
+
+    'domain' => env('APP_DOMAIN'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +43,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +56,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'zh-CN',
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +99,7 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'daily'),
 
     /*
     |--------------------------------------------------------------------------
@@ -145,6 +149,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+		Illuminate\Html\HtmlServiceProvider::class,
+        Illuminate\Remote\RemoteServiceProvider::class,
+
+        Zizaco\Entrust\EntrustServiceProvider::class,
+        Jenssegers\Agent\AgentServiceProvider::class,
+        HieuLe\Active\ActiveServiceProvider::class,
+        Propaganistas\LaravelPhone\LaravelPhoneServiceProvider::class,
     ],
 
     /*
@@ -193,6 +204,8 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+
 
     ],
 

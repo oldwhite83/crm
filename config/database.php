@@ -49,7 +49,7 @@ return [
         'sqlite' => [
             'driver'   => 'sqlite',
             'database' => database_path('database.sqlite'),
-            'prefix'   => '',
+            'prefix'   => env('DB_PREFIX', ''),
         ],
 
         'mysql' => [
@@ -60,7 +60,7 @@ return [
             'password'  => env('DB_PASSWORD', ''),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
+            'prefix'   => env('DB_PREFIX', ''),
             'strict'    => false,
         ],
 
@@ -71,7 +71,7 @@ return [
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'charset'  => 'utf8',
-            'prefix'   => '',
+            'prefix'   => env('DB_PREFIX', ''),
             'schema'   => 'public',
         ],
 
@@ -82,7 +82,7 @@ return [
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'charset'  => 'utf8',
-            'prefix'   => '',
+            'prefix'   => env('DB_PREFIX', ''),
         ],
 
     ],
@@ -110,17 +110,27 @@ return [
     | such as APC or Memcached. Laravel makes it easy to dig right in.
     |
     */
-
-    'redis' => [
+	'redis' => [
 
         'cluster' => false,
 
+        'options' => [
+            'prefix' => 'jkxy_crm:',
+        ],
+
         'default' => [
-            'host'     => '127.0.0.1',
+            'host'     => env('REDIS_HOST', '127.0.0.1'),
             'port'     => 6379,
             'database' => 0,
+            'password' => env('REDIS_PASSWORD'),
+        ],
+
+        'session' => [
+            'host'     => env('REDIS_HOST', '127.0.0.1'),
+            'port'     => 6379,
+            'database' => 3,
+            'password' => env('REDIS_PASSWORD'),
         ],
 
     ],
-
 ];
